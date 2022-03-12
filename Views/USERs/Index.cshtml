@@ -1,0 +1,75 @@
+﻿@model IEnumerable<GREENWICH.Models.USER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.USERNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USEREMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USERPASSWORD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIRSTNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LASTNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GENDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ROLE.ROLENAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.USERNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USEREMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USERPASSWORD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIRSTNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LASTNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GENDER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ROLE.ROLENAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.USERID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.USERID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.USERID })
+        </td>
+    </tr>
+}
+
+</table>

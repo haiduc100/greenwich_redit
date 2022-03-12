@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GREENWICH.Models.REACTION>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTIVE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDEA.AUTHOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USER.USERNAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACTIVE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDEA.AUTHOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USER.USERNAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.REACTIONID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.REACTIONID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.REACTIONID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,82 @@
+﻿@model GREENWICH.Models.USER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>USER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.USERNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USERNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USEREMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USEREMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USERPASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USERPASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FIRSTNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIRSTNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LASTNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LASTNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ROLE.ROLENAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROLE.ROLENAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.USERID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

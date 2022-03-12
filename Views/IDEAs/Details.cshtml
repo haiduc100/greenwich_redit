@@ -1,0 +1,82 @@
+﻿@model GREENWICH.Models.IDEA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>IDEA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SLUG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLUG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FIRSTCLOSUREDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIRSTCLOSUREDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FINALCLOSUREDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FINALCLOSUREDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRIVACY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRIVACY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPLOAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPLOAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER.USERNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER.USERNAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDEAID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a392c3f768504d859bd7625424630a78" Name="Diagram1" ZoomLevel="113">
+        <EntityTypeShape EntityType="GREENWICHModel.COMMENT" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GREENWICHModel.IDEA" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GREENWICHModel.IDEACATEGORY" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GREENWICHModel.IDEATAG" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GREENWICHModel.REACTION" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GREENWICHModel.ROLE" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="GREENWICHModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GREENWICHModel.USER" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="GREENWICHModel.FK__COMMENT__IDEAID__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="GREENWICHModel.FK__COMMENT__REPLYFO__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="GREENWICHModel.FK__IDEACATEG__IDEAI__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="GREENWICHModel.FK__REACTION__IDEALI__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="GREENWICHModel.FK__IDEACATEG__IDEAT__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="GREENWICHModel.FK__REACTION__USERID__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="GREENWICHModel.FK__USERS__ROLEID__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="GREENWICHModel.FK_IDEA_USERS" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GREENWICHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="COMMENT">
+    <Key>
+      <PropertyRef Name="COMMENTID" />
+    </Key>
+    <Property Name="COMMENTID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDEAID" Type="bigint" Nullable="false" />
+    <Property Name="REPLYFOR" Type="bigint" Nullable="false" />
+    <Property Name="CONTENT" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PRIVACY" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IDEA">
+    <Key>
+      <PropertyRef Name="IDEAID" />
+    </Key>
+    <Property Name="IDEAID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AUTHOR" Type="bigint" />
+    <Property Name="TITLE" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="SLUG" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CONTENT" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="FIRSTCLOSUREDATE" Type="datetime" Nullable="false" />
+    <Property Name="FINALCLOSUREDATE" Type="datetime" Nullable="false" />
+    <Property Name="PRIVACY" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="UPLOAD" Type="nchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="IDEACATEGORY">
+    <Key>
+      <PropertyRef Name="IDEACATEGORYID" />
+    </Key>
+    <Property Name="IDEACATEGORYID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDEAID" Type="bigint" />
+    <Property Name="IDEATAGID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="IDEATAG">
+    <Key>
+      <PropertyRef Name="IDEATAGID" />
+    </Key>
+    <Property Name="IDEATAGID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TITLE" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="SLUG" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REACTION">
+    <Key>
+      <PropertyRef Name="REACTIONID" />
+    </Key>
+    <Property Name="REACTIONID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERID" Type="bigint" />
+    <Property Name="IDEALID" Type="bigint" />
+    <Property Name="ACTIVE" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="ROLEID" />
+    </Key>
+    <Property Name="ROLEID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ROLENAME" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="USEREMAIL" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="USERPASSWORD" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="FIRSTNAME" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="LASTNAME" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="GENDER" Type="nvarchar" MaxLength="500" />
+    <Property Name="ROLEID" Type="bigint" />
+  </EntityType>
+  <Association Name="FK__COMMENT__IDEAID__5441852A">
+    <End Role="IDEA" Type="Self.IDEA" Multiplicity="1" />
+    <End Role="COMMENT" Type="Self.COMMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDEA">
+        <PropertyRef Name="IDEAID" />
+      </Principal>
+      <Dependent Role="COMMENT">
+        <PropertyRef Name="IDEAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__COMMENT__REPLYFO__5535A963">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="COMMENT" Type="Self.COMMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="COMMENT">
+        <PropertyRef Name="REPLYFOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IDEACATEG__IDEAI__59FA5E80">
+    <End Role="IDEA" Type="Self.IDEA" Multiplicity="0..1" />
+    <End Role="IDEACATEGORY" Type="Self.IDEACATEGORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDEA">
+        <PropertyRef Name="IDEAID" />
+      </Principal>
+      <Dependent Role="IDEACATEGORY">
+        <PropertyRef Name="IDEAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IDEACATEG__IDEAT__5AEE82B9">
+    <End Role="IDEATAG" Type="Self.IDEATAG" Multiplicity="0..1" />
+    <End Role="IDEACATEGORY" Type="Self.IDEACATEGORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDEATAG">
+        <PropertyRef Name="IDEATAGID" />
+      </Principal>
+      <Dependent Role="IDEACATEGORY">
+        <PropertyRef Name="IDEATAGID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REACTION__IDEALI__5165187F">
+    <End Role="IDEA" Type="Self.IDEA" Multiplicity="0..1" />
+    <End Role="REACTION" Type="Self.REACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDEA">
+        <PropertyRef Name="IDEAID" />
+      </Principal>
+      <Dependent Role="REACTION">
+        <PropertyRef Name="IDEALID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REACTION__USERID__5070F446">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="REACTION" Type="Self.REACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="REACTION">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__ROLEID__4BAC3F29">
+    <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="ROLEID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="ROLEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDEA_USERS">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="IDEA" Type="Self.IDEA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="IDEA">
+        <PropertyRef Name="AUTHOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GREENWICHModelStoreContainer">
+    <EntitySet Name="COMMENT" EntityType="Self.COMMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IDEA" EntityType="Self.IDEA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IDEACATEGORY" EntityType="Self.IDEACATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IDEATAG" EntityType="Self.IDEATAG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REACTION" EntityType="Self.REACTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__COMMENT__IDEAID__5441852A" Association="Self.FK__COMMENT__IDEAID__5441852A">
+      <End Role="IDEA" EntitySet="IDEA" />
+      <End Role="COMMENT" EntitySet="COMMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__COMMENT__REPLYFO__5535A963" Association="Self.FK__COMMENT__REPLYFO__5535A963">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="COMMENT" EntitySet="COMMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IDEACATEG__IDEAI__59FA5E80" Association="Self.FK__IDEACATEG__IDEAI__59FA5E80">
+      <End Role="IDEA" EntitySet="IDEA" />
+      <End Role="IDEACATEGORY" EntitySet="IDEACATEGORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IDEACATEG__IDEAT__5AEE82B9" Association="Self.FK__IDEACATEG__IDEAT__5AEE82B9">
+      <End Role="IDEATAG" EntitySet="IDEATAG" />
+      <End Role="IDEACATEGORY" EntitySet="IDEACATEGORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REACTION__IDEALI__5165187F" Association="Self.FK__REACTION__IDEALI__5165187F">
+      <End Role="IDEA" EntitySet="IDEA" />
+      <End Role="REACTION" EntitySet="REACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REACTION__USERID__5070F446" Association="Self.FK__REACTION__USERID__5070F446">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="REACTION" EntitySet="REACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__ROLEID__4BAC3F29" Association="Self.FK__USERS__ROLEID__4BAC3F29">
+      <End Role="ROLE" EntitySet="ROLE" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDEA_USERS" Association="Self.FK_IDEA_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="IDEA" EntitySet="IDEA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

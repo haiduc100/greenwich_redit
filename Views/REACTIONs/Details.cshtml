@@ -1,0 +1,42 @@
+﻿@model GREENWICH.Models.REACTION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>REACTION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTIVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTIVE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDEA.AUTHOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDEA.AUTHOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER.USERNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER.USERNAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.REACTIONID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
